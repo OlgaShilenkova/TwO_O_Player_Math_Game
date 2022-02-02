@@ -13,7 +13,7 @@ class Player
   @score = @score - 1
   end  
 
-  def loose_game?  #true if lose, false if not
+  def loose_game?  #true if lose, false if win
     @score == 0
   end  
   

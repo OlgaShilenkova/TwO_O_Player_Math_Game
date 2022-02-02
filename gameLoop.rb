@@ -8,18 +8,21 @@ class GameLoop
   end
 
   def start
-
+  #if nobode lose start the game
     while !@player1.loose_game? && !@player2.loose_game?
       question = Question.new 
       question.ask_question(@current_player) 
+      #if answer is right
       if question.eval_answer?
         puts "#{@current_player.name}: Great! It's right!"
-      else  
+      else  # if answer is wrong
         puts "#{@current_player.name}: Seriously? No!"
         @current_player.lose_life
       end  
+      #print score for each
       @player1.print_score 
       @player2.print_score 
+      # change 
       switch_player
       if !@player1.loose_game? && !@player2.loose_game?
       puts " NEW TURN"
@@ -42,10 +45,8 @@ class GameLoop
     if 
       @current_player == @player1
       @current_player = @player2
-      puts "The current player is : #{@current_player.name}" 
     else
       @current_player = @player1
-      puts "The current player is : #{@current_player.name} " 
     end    
   end  
 end
